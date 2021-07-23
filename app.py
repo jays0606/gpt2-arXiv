@@ -54,8 +54,7 @@ def run_long(text, length):
         
         output_text = tokenizer.decode(output_ids, skip_special_tokens=True)
         output_summary = summarizer(output_text, max_length=50, do_sample=False)
-        print(output_summary)
-
+        
         return [output_text, output_summary[0]['summary_text']]
 
     except Exception as e:
