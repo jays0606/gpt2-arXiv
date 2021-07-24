@@ -1,3 +1,5 @@
 transformers
 flask
 waitress
+pandas
+argparse

@@ -1,5 +1,5 @@
 # External module.
-from transformers import AutoModelWithLMHead, AutoTokenizer, top_k_top_p_filtering, pipeline
+from transformers import AutoModelWithLMHead, AutoTokenizer, pipeline
 from flask import Flask, request, Response, jsonify, render_template
 import torch
 from torch.nn import functional as F
@@ -11,8 +11,10 @@ import time
 
 app = Flask(__name__)
 
-tokenizer = AutoTokenizer.from_pretrained("gpt2-medium")
-model = AutoModelWithLMHead.from_pretrained("gpt2-medium")
+tokenizer = AutoTokenizer.from_pretrained("gpt2", bos_token='<|startoftext|>', eos_token='<|endoftext|>', pad_token='<|pad|>')
+model = AutoModelWithLMHead.from_pretrained('./checkpoint')
+model.resize_token_embeddings(len(tokenizer))
+
 summarizer = pipeline("summarization")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')   # gpu check.
@@ -36,24 +38,21 @@ def handle_requests_by_batch():
                 continue
 
             for requests in request_batch:
-                requests["output"] = run_long(requests['input'][0], requests['input'][1]) # text, length 
+                requests["output"] = gpt2_arXiv(requests['input'][0], requests['input'][1]) # text, length 
 
 handler = threading.Thread(target=handle_requests_by_batch).start()
 
 ##
-# generate gpt2-arXiv text of length 'length'
-def run_long(text, length):
+# generate gpt2-arXiv abstract text and its summary 
+def gpt2_arXiv(text, length):
     try:
+        input_ids = tokenizer("<|startoftext|> " + text, return_tensors="pt").input_ids.to(device)
 
-        if length > 200:
-            length = 200 # Occasional error
-        input_ids = tokenizer.encode(text, return_tensors = 'pt').to(device)
-
-        output_ids = model.generate(input_ids, max_length=len(text)+length, do_sample=True, top_k=50)
+        output_ids = model.generate(input_ids, max_length=len(text)+length, do_sample=True, top_k=50, num_return_sequences=1)
         output_ids = output_ids[0].tolist()
         
         output_text = tokenizer.decode(output_ids, skip_special_tokens=True)
-        output_summary = summarizer(output_text, max_length=50, do_sample=False)
+        output_summary = summarizer(output_text, max_length=100, do_sample=False)
         
         return [output_text, output_summary[0]['summary_text']]
 

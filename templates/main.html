@@ -113,8 +113,8 @@
                 <!-- Project title -->
                 <h1>GPT2 arXiv style text</h1><br>
                 <a>Generate arXiv abstract style text</a><br><br>
-                <a>Git hub repository : </a> <a href="https://github.com/fpem123/GPT2-marketing-man" target="_blank">GPT2 arXiv style text</a><br>
-                <a>Model : </a><a href="https://huggingface.co/laxya007/gpt2_Marketingman" target="_blank">Hugging face</a><br><br>
+                <a>Git hub repository : </a> <a href="https://github.com/jays0606/gpt2-arXiv" target="_blank">gpt2-arXiv</a><br>
+                <a>Dataset : </a><a href="https://www.kaggle.com/Cornell-University/arxiv" target="_blank">Kaggle-arXiv</a><br><br>
             </div>
 
             <hr width="90%">
@@ -122,7 +122,7 @@
             <div class="Notice">
                 <h3>Notice</h3>
                 <ul>
-                    <li>This demo creates a arXiv style text.</li>
+                    <li>This demo creates a arXiv abstract style text and its summary.</li>
                 </ul>
             </div>
 
@@ -131,25 +131,24 @@
             <div class="sample">
                 <h3><label>Example</label></h3>
                 <h5><label>Input</label></h5>
-                <label>&nbsp;&nbsp;We propose an alternative generator architecture</label><br><br>
+                <label>&nbsp;&nbsp;Convolutional Neural Networks</label><br><br>
                 <h5><label>Text</label></h5>
                 <label>
-                    &nbsp;&nbsp;We propose an alternative generator architecture  which improves upon the workarounds 
-                    of the original. We suggest using the new algorithm to produce large-dense networks that can be created 
-                    and maintained by an ever-increasing number of machines. The first generation is the most advanced yet. 
-                    To develop large-dense networks, a large number of CPUs are needed to perform the arithmetic operations 
-                    necessary to encode the output of a given output data segment. In such an environment, the computational 
-                    cost of doing that computation isn't insignificant.  The computational cost depends on a number of key 
-                    features, such as the size of the network, and it is highly critical that those features be included in 
-                    the model. That's because the size of the segment data structure becomes increasingly large. When all the 
-                    chips are exhausted, the network grows indefinitely, but as the number of CPUs increases, the cost of 
-                    computation becomes very high.  A large system like that of the NEM might produce large numbers of large data 
-                    segments that will remain large forever, but the network in the NEM will be fragmented and eventually go in a 
-                    different direction and disappear from view, leaving the entire network with less information. In such a 
-                    scenario, the results obtained are meaningless, just as
+                    &nbsp;&nbsp;Convolutional Neural Networks (CNNs) perform many tasks in video analysis and classification. Due to fast convergence, 
+                    some specific variants of the network have been proposed to perform different tasks in this framework. In contrast to standard CNNs, 
+                    they employ a fixed-point kernel to extract informative features. In contrast to CNNs that use the discrete series to make the predictions, 
+                    we introduce the time series kernel with temporal dependence to deal with long-term temporal dependencies in the prediction. The temporal 
+                    dependence in the time series kernels can be computed using iterative filters. The algorithm is based on convolutional neural networks, and 
+                    it has been designed to perform fast and accurate predictions. We demonstrate the advantages of this method in several challenging benchmark 
+                    datasets (PASCAL VOC 2004, DUC 2004, and GUMPC 2005) with various hardware architectures using computer vision and video surveillance data sets. 
+                    Our evaluation shows that our proposed strategy outperforms several state-of-the-art CNNs in the classification and classification tasks on CIFAR-10 
+                    VOC data set for classification, PASCAL VOC, and GUMPC, respectively, showing the efficacy of the proposed approach.
                 </label>
                 <h5><label>Summary</label></h5>
-                <label>&nbsp;&nbsp;We propose an alternative generator architecture</label><br><br>
+                <label>&nbsp;&nbsp; Convolutional Neural Networks (CNNs) perform many tasks in video analysis and classification . 
+                    In contrast to standard CNNs, they employ a fixed-point kernel to extract informative features . We demonstrate 
+                    the advantages of this method in several challenging benchmark datasets (PASCAL VOC 2004, DUC 2004, and GUMPC 2005) 
+                    with various hardware architectures .</label><br><br>
             </div>
 
             <br><hr width="90%">
@@ -160,10 +159,10 @@
                 <input type="text" id="text" style="width:40%">
                 <label>length: </label>
                 <select id="length">
-                    <option value="50">50</option>
-                    <option value="100">100</option>
                     <option value="150">150</option>
-                    <option value="2000">200</option>
+                    <option value="200">200</option>
+                    <option value="250">250</option>
+                    <option value="300">300</option>
                 </select>
                 <button class="btn btn-primary btn=lg" type="submit" id="button" onclick="send_req();">submit</button><br>
                 <b><label id="warning" style="color:red;"></label></b>
