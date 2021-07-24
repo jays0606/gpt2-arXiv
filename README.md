@@ -1,19 +1,26 @@
 # GPT2-arXiv style text
 
-This project generates arXiv abstract style text and its summary using GPT-2 model.
+This project generates arXiv abstract style text and its summary using finetuned GPT-2 model.
 
-model: [laxya007/gpt2_Marketingman](https://huggingface.co/laxya007/gpt2_Marketingman)
+![image](./demo.gif)
+
+model: [Google Drive](https://drive.google.com/file/d/1HIHIXIVdj1SZGgW8PFXxqqL-Pt0FMZa3/view?usp=sharing)
+dataset: [Kaggle arXiv](https://www.kaggle.com/Cornell-University/arxiv)
+
+### ** Docker **
+
+* docker build -t arxiv . (build image)
+* docker run -p 80:80 --name arxiv -d arxiv (build container)
+* docker logs -f arxiv (To check progress)
+
+Download might take a while. Once completed, server is available at http://localhost, or http://0.0.0.0
+* docker rm -f arxiv (To end)
 
 ## how to use
 
-* First, Fill text in "text"! This will be the base of your abstract. 
-
+* First, Fill text in "text". This will be the base of your abstract. 
 * Choose the length of your text. 
-
 * Complete!
-
-
-### ** Post parameter **
 
 #### /GPT2-arXiv/
 
