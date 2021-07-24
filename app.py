@@ -48,7 +48,7 @@ def gpt2_arXiv(text, length):
     try:
         input_ids = tokenizer("<|startoftext|> " + text, return_tensors="pt").input_ids.to(device)
 
-        output_ids = model.generate(input_ids, max_length=len(text)+length, do_sample=True, top_k=50, num_return_sequences=1)
+        output_ids = model.generate(input_ids, max_length=len(text)+length, do_sample=True, top_k=30, num_return_sequences=1)
         output_ids = output_ids[0].tolist()
         
         output_text = tokenizer.decode(output_ids, skip_special_tokens=True)

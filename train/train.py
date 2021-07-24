@@ -65,7 +65,10 @@ if __name__ == "__main__":
                                                                 'attention_mask': torch.stack([f[1] for f in data]),
                                                                 'labels': torch.stack([f[0] for f in data])})
 
-    trainer.train()
+    if args.model_path:
+        trainer.train(args.model_path)
+    else:
+        trainer.train()
 
 
 
