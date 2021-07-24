@@ -2,6 +2,8 @@
 
 This project generates arXiv abstract style text and its summary using finetuned GPT-2 model.
 
+For training and preprocessing, check the ./train folder 
+
 ![image](./demo.gif)
 
 model: [Google Drive](https://drive.google.com/file/d/1HIHIXIVdj1SZGgW8PFXxqqL-Pt0FMZa3/view?usp=sharing)
@@ -14,10 +16,15 @@ dataset: [Kaggle arXiv](https://www.kaggle.com/Cornell-University/arxiv)
 
     docker logs -f arxiv (To check progress)
 
+    docker rm -f arxiv (To end)
+    
+    ------------------------------------------------------------
+    
     Download might take a while. Once completed, server is 
     available at http://localhost, or http://0.0.0.0
-
-    docker rm -f arxiv (To end)
+    
+    If container dies instantly, you might want to devote 
+    more RAM to docker in docker -> preferences -> advanced
 
 ## how to use
     First, Fill text in "text". This will be the base of your abstract. 
@@ -29,14 +36,22 @@ dataset: [Kaggle arXiv](https://www.kaggle.com/Cornell-University/arxiv)
 #### /GPT2-arXiv/
 
     text: The base text to generate arXiv abstract style text. 
+    
     length: Size of text.
+    
+    output format: [generated_text, summary]
 
+    
+### References
 
-### Output format
+    https://github.com/fpem123/GPT2-marketing-man
+    
+    https://www.kaggle.com/officialshivanandroy/transformers-generating-titles-from-abstracts
+    
+    https://medium.com/geekculture/fine-tune-eleutherai-gpt-neo-to-generate-netflix-movie-descriptions-in-only-47-lines-of-code-40c9b4c32475
+    
+    
 
-#### /GPT2-arXiv/
-
-    [generated_text, summary]
   
 
   
