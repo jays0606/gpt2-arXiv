@@ -15,8 +15,10 @@ dataset: [Kaggle arXiv](https://www.kaggle.com/Cornell-University/arxiv)
     docker run -p 80:80 --name arxiv -d arxiv (build container)
 
     docker logs -f arxiv (To check progress)
+    
+    docker stop arxiv (Stop Container)
 
-    docker rm -f arxiv (To end)
+    docker rm -f arxiv (Remove container)
     
     ------------------------------------------------------------
     
