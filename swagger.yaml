@@ -1,0 +1,45 @@
+openapi: 3.0.0   # Open api version
+
+info:   # Set basic infomation
+  title: gpt2-arxiv-abstract
+  version: 0.1.1
+  description: |
+    This app generates arXiv-abstract style text and its summary.
+
+servers:   # Set your server endpoint
+  - url: https://main_gpt2-arxiv_jays0606.endpoint.ainize.ai
+
+paths:
+  /GPT2-arXiv/:   # Post method path
+    post:
+      requestBody:
+        required: true
+        description: |
+          This request returns abstract text and its summary. Input text and length is required
+          
+          curl example
+
+              curl -X POST "https://main_gpt2-arxiv_jays0606.endpoint.ainize.ai/GPT2-arXiv/" -H "accpet: application/json" -H "Content-Type: multipart/form-data" - F "text=CNNs" -F "length=200"
+          
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                length:
+                  type: string
+      responses:   # Set response
+        '200':
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: "Bad Request Error"
+        '429':
+          description: "Too many requests"
+        '500':
+          description: "Server-side Error"

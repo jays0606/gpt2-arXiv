@@ -70,10 +70,10 @@
             document.getElementById('warning').innerText = err;
         }).then(data => {
             const result_text = document.getElementById('generated');
-            result_text.innerHTML = '&nbsp;&nbsp;' + data[0];
+            result_text.innerHTML = '&nbsp;&nbsp;' + data["abstract"];
 
             const summary = document.getElementById('summary');
-            summary.innerHTML = '&nbsp;&nbsp;' + data[1];
+            summary.innerHTML = '&nbsp;&nbsp;' + data["summary"];
 
             clearInterval(timer);
             time_obj.innerText = 'Done!';

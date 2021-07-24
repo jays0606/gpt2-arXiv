@@ -54,7 +54,7 @@ def gpt2_arXiv(text, length):
         output_text = tokenizer.decode(output_ids, skip_special_tokens=True)
         output_summary = summarizer(output_text, max_length=100, do_sample=False)
         
-        return [output_text, output_summary[0]['summary_text']]
+        return {"abstract": output_text, "summary": output_summary[0]['summary_text']}
 
     except Exception as e:
         print('Error occur in long generating!', e)
