@@ -7,7 +7,7 @@ info:   # Set basic infomation
     This app generates arXiv-abstract style text and its summary.
 
 servers:   # Set your server endpoint
-  - url: https://master-gpt2-arxiv-jays0606.endpoint.ainize.ai
+  - url: https://master-gpt2-ar-xiv-jays0606.endpoint.ainize.ai
 
 paths:
   /GPT2-arxiv/:   # Post method path
@@ -19,7 +19,7 @@ paths:
           
           curl example
 
-              curl -X POST "https://master-gpt2-arxiv-jays0606.endpoint.ainize.ai/GPT2-arXiv/" -H "accpet: application/json" -H "Content-Type: multipart/form-data" - F "text=CNNs" -F "length=200"
+              curl -X POST "https://master-gpt2-ar-xiv-jays0606.endpoint.ainize.ai/GPT2-arXiv/" -H "accpet: application/json" -H "Content-Type: multipart/form-data" - F "text=CNNs" -F "length=200"
 
         content:
           multipart/form-data:
