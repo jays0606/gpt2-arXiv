@@ -4,6 +4,8 @@ This project generates arXiv abstract style text and its summary using finetuned
 
 For training and preprocessing, check the ./train folder 
 
+[![Run on Ainize](https://ainize.ai/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=https://github.com/jays0606/gpt2-arXiv)
+
 ![image](./demo.gif)
 
 model: [Google Drive](https://drive.google.com/file/d/1HIHIXIVdj1SZGgW8PFXxqqL-Pt0FMZa3/view?usp=sharing)
