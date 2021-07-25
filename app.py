@@ -15,10 +15,12 @@ tokenizer = AutoTokenizer.from_pretrained("gpt2", bos_token='<|startoftext|>', e
 model = AutoModelWithLMHead.from_pretrained('./checkpoint')
 model.resize_token_embeddings(len(tokenizer))
 
-summarizer = pipeline("summarization")
+tokenizer_summary = AutoTokenizer.from_pretrained("t5-small")
+model_summary = AutoModelWithLMHead.from_pretrained("t5-small")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')   # gpu check.
 model.to(device)
+model_summary.to(device)
 
 requests_queue = Queue()    # request queue.
 BATCH_SIZE = 1              # max request size.
@@ -52,9 +54,12 @@ def gpt2_arXiv(text, length):
         output_ids = output_ids[0].tolist()
         
         output_text = tokenizer.decode(output_ids, skip_special_tokens=True)
-        output_summary = summarizer(output_text, max_length=100, do_sample=False)
+
+        input_summary = tokenizer_summary.encode("summarize: " + output_text, return_tensors="pt")
+        output_summary = model_summary.generate(input_summary, max_length=100, do_sample = False)[0]
+        output_summary = tokenizer_summary.decode(output_summary, skip_special_tokens=True)
         
-        return {"abstract": output_text, "summary": output_summary[0]['summary_text']}
+        return {"abstract": output_text, "summary": output_summary}
 
     except Exception as e:
         print('Error occur in long generating!', e)
@@ -63,7 +68,7 @@ def gpt2_arXiv(text, length):
 
 ##
 # Get post request page.
-@app.route('/GPT2-arXiv/', methods=['POST'])
+@app.route('/GPT2-arxiv/', methods=['POST'])
 def generate():
 
     # GPU app can process only one request in one time.
