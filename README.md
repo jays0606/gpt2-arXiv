@@ -2,21 +2,31 @@
 
 This project generates arXiv abstract style text and its summary using finetuned GPT-2 model.
 
+Training was done by fine-tuning gpt2 with arXiv dataset. 
+
 For training and preprocessing, check the ./train folder 
 
 [![Run on Ainize](https://ainize.ai/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=https://github.com/jays0606/gpt2-arXiv)
 
 ![image](./demo.gif)
 
-model: [Google Drive](https://drive.google.com/file/d/1HIHIXIVdj1SZGgW8PFXxqqL-Pt0FMZa3/view?usp=sharing)
+model: [Google Drive](https://drive.google.com/file/d/1CYVs3ZjePZAfFCsVt-fEIqiCj6UTi7uU/view?usp=sharing)
+
 dataset: [Kaggle arXiv](https://www.kaggle.com/Cornell-University/arxiv)
+
+## Model Info 
+    Base model: gpt2-small 
+
+    Finetuned model: 
+
+    Summary base model: T5-small
 
 ## Docker
     docker build -t arxiv . (build image)
 
-    docker run -p 80:80 --name arxiv -d arxiv (build container)
+    docker run -p 80:80 --name arxiv -d arxiv (run container)
 
-    docker logs -f arxiv (To check progress)
+    docker logs -f arxiv (Check logs)
     
     docker stop arxiv (Stop Container)
 
@@ -26,24 +36,22 @@ dataset: [Kaggle arXiv](https://www.kaggle.com/Cornell-University/arxiv)
     
     Download might take a while. Once completed, server is 
     available at http://localhost, or http://0.0.0.0
-    
-    If container dies instantly, you might want to devote 
-    more RAM to docker in docker -> preferences -> advanced
 
-## how to use
+## How to use  [Demo](https://master-gpt2-ar-xiv-jays0606.endpoint.ainize.ai/)
+
     First, Fill text in "text". This will be the base of your abstract. 
 
     Choose the length of your text. 
-    
-    Complete!
 
-#### /GPT2-arXiv/
+    Submit! 
+ 
+## API page   [Ainize](https://ainize.ai/jays0606/gpt2-arXiv?branch=master)
 
-    text: The base text to generate arXiv abstract style text. 
+    Curl Input: 
+
+        curl -X POST "https://master-gpt2-ar-xiv-jays0606.endpoint.ainize.ai/GPT2-arXiv/" -H "accpet: application/json" -H "Content-Type: multipart/form-data" - F "text=CNNs" -F "length=200"
     
-    length: Size of text.
-    
-    output format: [generated_text, summary]
+    output format: {"abstract": generated_text, "summary: "summary}
 
     
 ### References
