@@ -10,7 +10,7 @@ For training and preprocessing, check the ./train folder
 
 ![image](./demo.gif)
 
-model: [Google Drive](https://drive.google.com/file/d/1CYVs3ZjePZAfFCsVt-fEIqiCj6UTi7uU/view?usp=sharing)
+model: [Google Drive](https://drive.google.com/file/d/1M8s6B4ZA7TQLc2yx6D76uzstcx3tT-nJ/view?usp=sharing)
 
 dataset: [Kaggle arXiv](https://www.kaggle.com/Cornell-University/arxiv)
 
