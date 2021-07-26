@@ -2,7 +2,7 @@
 
 This project generates arXiv abstract style text and its summary using finetuned GPT-2 model.
 
-Training was done by fine-tuning gpt2 with arXiv dataset. 
+Training was done by fine-tuning gpt2 with arXiv dataset with years > 2010. 
 
 For training and preprocessing, check the ./train folder 
 
@@ -16,8 +16,6 @@ dataset: [Kaggle arXiv](https://www.kaggle.com/Cornell-University/arxiv)
 
 ## Model Info 
     Base model: gpt2-small 
-
-    Finetuned model: 
 
     Summary base model: T5-small
 
